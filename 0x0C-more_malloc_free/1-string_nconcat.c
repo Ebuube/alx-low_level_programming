@@ -13,25 +13,28 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *string = NULL;
-	unsigned int i = 0, len = 0, len2 = 0;
+	unsigned int c_i = 0, c_j = 0, len1 = 0, len2 = 0;
 
-	while (s1[i])
-		len++, i++;
-	len += n;
-	i = 0;
-	while (s2[i])
-		len2++, i++;
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
 
-	string = (char *) malloc(len * sizeof(char));
-	i = 0;	/* copying the characters */
-	while (s1[i])
-		string [i] = s1[i], i++;
-	if (n >= len2)
-		n = len2;
-	while (n > 0)
+	if (n < len2)
+		string = malloc((len1 + n + 1) * sizeof(char));
+	else
+		string = malloc((len1 + len2 + 1) * sizeof(char));
+
+	if (string == NULL)
 	{
-		string[i] = s2[i];
-		i++, n--;
+		return (NULL);
 	}
+	while (c_i < len1)
+		string[c_i] = s1[c_i], c_i++;
+	while (n < len2 && c_i < (len1 + n))
+		string[c_i] = s2[c_j], c_i++, c_j++;
+
+	string[c_i] = '\0';
+
 	return (string);
 }
