@@ -9,6 +9,7 @@
  * Description: if n is greater or equal to the length of s2
  * then uset the entire string s2
  * If NULL is passed, treat as an empty string
+ * Return: the concatenated string or NULL on failure
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
@@ -19,7 +20,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		len1++;
 	while (s2 && s2[len2])
 		len2++;
-
+	len1 = (s1 == NULL || s1[0] == '\0') ? 0 : len1;
+	len2 = (s2 == NULL || s2[0] == '\0') ? 0 : len2;
 	if (n < len2)
 		string = malloc((len1 + n + 1) * sizeof(char));
 	else
