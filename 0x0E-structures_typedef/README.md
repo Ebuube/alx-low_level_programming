@@ -21,3 +21,9 @@ You are allowed to use the standard library
 If an element of d is NULL, print (nil) instead of this element. (if name is NULL, print Name: (nil))
 If d is NULL print nothing.
 
+The file 4-new_dog.c is a C function that creates a new dog.
+
+Prototype: dog_t *new_dog(char *name, float age, char *owner);
+You have to store a copy of name and owner
+Return NULL if the function fails
+
