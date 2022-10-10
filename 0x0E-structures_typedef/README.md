@@ -9,3 +9,7 @@ name, type = char *
 age, type = float
 owner, type = char *
 
+The file 1-init_dog.c is a C function that initialize a variable of type struct dog
+
+Prototype: void init_dog(struct dog *d, char *name, float age, char *owner);
+
