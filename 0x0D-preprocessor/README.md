@@ -11,3 +11,5 @@ The file 2-main.c is a C program that prints the name of the file it was compile
 
 You are allowed to use the standard library
 
+The file 3-function_like_macro.h is contains a C function-like macro ABS(x) that computes the absolute value of a number x.
+
