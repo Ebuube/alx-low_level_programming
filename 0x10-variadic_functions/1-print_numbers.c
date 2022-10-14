@@ -20,7 +20,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	{
 		return;
 	}
-	va_start(my_list, n);
+	va_start(my_list, n);	/* important */
 	for (i = 0; (const unsigned int) i < n; i ++)
 	{
 		printf("%d", va_arg(my_list, int));
@@ -28,5 +28,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 				(const unsigned int) i < n - 1)
 			printf("%s", separator);
 	}
+	va_end(my_list);	/* important */
 	putchar('\n');
 }
