@@ -1,8 +1,5 @@
 #include "3-calc.h"
 
-#include <stdlib.h>
-#include <string.h>
-
 /**
  * get_op_func - selects the correct function for the operator passed to it
  * @s: the operator passed as string of length 2
@@ -23,7 +20,9 @@ int (*get_op_func(char *s))(int, int)
 		{"%", op_mod},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int i;
+
+	i = 0;
 
 	while (ops[i].op)
 	{
