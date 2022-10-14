@@ -27,7 +27,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			value = "(nil)";
 
 		printf("%s", value);
-		if ((const unsigned int) i < n -1)
+		if ((const unsigned int) i < n - 1)
 			printf("%s", separator);
 	}
 	va_end(my_list);
