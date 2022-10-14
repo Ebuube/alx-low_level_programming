@@ -13,27 +13,22 @@ void print_all(const char * const format, ...)
 {
 	va_list my_list;
 	int i = 0;
-	char *str = 0;
+	char *str = 0, *sep = ", ";
 
-	if (!format)
-	{
-		printf("\n");
-		return;
-	}
 
 	va_start(my_list, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i]; i++)
 	{
 		switch (format[i])
 		{
 			case 'c':
-				printf("%c", va_arg(my_list, char));
+				printf("%c", va_arg(my_list, int));
 				break;
 			case 'i':
 				printf("%d", va_arg(my_list, int));
 				break;
 			case 'f':
-				printf("%f", va_arg(my_list, float));
+				printf("%f", va_arg(my_list, double));
 				break;
 			case 's':
 				str = va_arg(my_list, char *);
@@ -42,7 +37,11 @@ void print_all(const char * const format, ...)
 				printf("%s", str);
 				break;
 			default:
+				continue;
 		}
+		if (format[i + 1])
+			printf("%s", sep);
 	}
+	printf("\n");
 }
 
