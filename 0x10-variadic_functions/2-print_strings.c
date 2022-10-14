@@ -19,7 +19,8 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	va_start(my_list, n);
 	for (i = 0; (const unsigned int) i < n; i++)
 	{
-		if ((value = va_arg(my_list, char *)) == 0)
+		value = va_arg(my_list, char *);
+		if (value == 0)
 			printf("(nil)");
 		else
 			printf("%s", value);
