@@ -1,15 +1,15 @@
 #include "lists.h"
 
 /**
- * add_node - adds a node to the beginning of a list_t list
- * @head: address of head pointer
- * @str: the string to use for initializing the node
+ * add_node_end - add a new node at the end of a list_t list
+ * @head: address of the head pointer
+ * @str: string to fill in the node
  *
- * Return: the address of the new element, or NULL if the function fails
+ * Return: the address of the new element or NULL if it failed
  */
-list_t *add_node(list_t **head, const char *str)
+list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *tmp = 0;
+	list_t *tmp = 0, *mov = 0;
 	int i = 0;
 
 	/* create and initialize node */
@@ -36,14 +36,15 @@ list_t *add_node(list_t **head, const char *str)
 	/* insert node */
 	if ((*head) != 0)
 	{
-		tmp->next = (*head);
-		(*head) = tmp;
+		for (mov = (*head); mov->next != 0; mov = mov->next)
+			;
+		mov->next = tmp;
+		tmp->next = 0;
 	}
 	else
 	{
 		tmp->next = 0;
 		(*head) = tmp;
 	}
-
 	return (tmp);
 }
