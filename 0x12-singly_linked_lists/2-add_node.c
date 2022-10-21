@@ -24,7 +24,7 @@ list_t *add_node(list_t **head, const char *str)
 	{
 		return (0);
 	}
-	for(tmp->len = 0; tmp->str[i] != '\0'; i++)
+	for (tmp->len = 0; tmp->str[i] != '\0'; i++)
 		tmp->len++;
 
 	/* insert node */
