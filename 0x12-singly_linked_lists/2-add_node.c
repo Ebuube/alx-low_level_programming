@@ -18,7 +18,6 @@ list_t *add_node(list_t **head, const char *str)
 	{
 		return (0);
 	}
-
 	if (str == 0)
 	{
 		tmp->str = 0;
@@ -34,7 +33,6 @@ list_t *add_node(list_t **head, const char *str)
 		for (tmp->len = 0; tmp->str[i] != '\0'; i++)
 			tmp->len++;
 	}
-
 	/* insert node */
 	if ((*head) != 0)
 	{
