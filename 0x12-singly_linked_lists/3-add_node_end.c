@@ -28,6 +28,8 @@ list_t *add_node_end(list_t **head, const char *str)
 		tmp->str = strdup(str);
 		if (tmp->str == 0)
 		{
+			free(tmp);
+			tmp = 0;
 			return (0);
 		}
 		for (tmp->len = 0; tmp->str[i] != '\0'; i++)

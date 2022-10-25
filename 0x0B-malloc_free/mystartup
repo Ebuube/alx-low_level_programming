@@ -1,0 +1,11 @@
+#!/bin/bash
+alias a='git add'
+alias ci='git commit -m'
+alias d='git pull'
+alias g='gcc -Wall -pedantic -Werror -Wextra -std=gnu89'
+alias ll='ls -l'
+alias ls='ls -F --color=auto --show-control-chars'
+alias p='git push'
+alias z='ls -a'
+alias x='chmod u+x'
+alias s='git status'
