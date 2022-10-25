@@ -31,3 +31,8 @@ The file 4-free_listint.c contains a C function that frees a listint_t list.
 
 Prototype: void free_listint(listint_t *head);
 
+The file 5-free_listint2.c contains a C function that frees a listint_t list.
+
+Prototype: void free_listint2(listint_t **head);
+The function sets the head to NULL
+
