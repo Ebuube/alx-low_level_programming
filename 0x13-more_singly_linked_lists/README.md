@@ -27,3 +27,7 @@ The file 3-add_nodeint_end.c contains a C function that adds a new node at the e
 Prototype: listint_t *add_nodeint_end(listint_t **head, const int n);
 Return: the address of the new element, or NULL if it failed
 
+The file 4-free_listint.c contains a C function that frees a listint_t list.
+
+Prototype: void free_listint(listint_t *head);
+
