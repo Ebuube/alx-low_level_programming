@@ -20,7 +20,13 @@ list_t *add_node(list_t **head, const char *str)
 	}
 	if (str == 0 || str[0] == '\0')
 	{
-		tmp->str = 0;
+		tmp->str = strdup("");
+		if (!tmp->str)
+		{
+			free(tmp);
+			tmp = 0;
+			return (0);
+		}
 		tmp->len = 0;
 	}
 	else
@@ -37,16 +43,7 @@ list_t *add_node(list_t **head, const char *str)
 			tmp->len++;
 	}
 	/* insert node */
-	if ((*head) != 0)
-	{
-		tmp->next = (*head);
-		(*head) = tmp;
-	}
-	else
-	{
-		tmp->next = 0;
-		(*head) = tmp;
-	}
-
+	tmp->next = (*head);
+	(*head) = tmp;
 	return (tmp);
 }
