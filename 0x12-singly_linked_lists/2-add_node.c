@@ -18,30 +18,18 @@ list_t *add_node(list_t **head, const char *str)
 	{
 		return (0);
 	}
-	if (str == 0 || str[0] == '\0')
+
+	for (tmp->len = 0; tmp->str[i]; i++)
+		tmp->len++;
+
+	tmp->str = (str == 0 || str[0] == '\0') ? strdup("") : strdup(str);
+	if (!tmp->str)
 	{
-		tmp->str = strdup("");
-		if (!tmp->str)
-		{
-			free(tmp);
-			tmp = 0;
-			return (0);
-		}
-		tmp->len = 0;
+		free(tmp);
+		tmp = NULL;
+		return (0);
 	}
-	else
-	{
-		tmp->str = strdup(str);
-		if (tmp->str == 0)
-		{
-			/* free everything if strdup fails */
-			free(tmp);
-			tmp = 0;
-			return (0);
-		}
-		for (tmp->len = 0; tmp->str[i] != '\0'; i++)
-			tmp->len++;
-	}
+	
 	/* insert node */
 	tmp->next = (*head);
 	(*head) = tmp;
