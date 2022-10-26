@@ -30,8 +30,16 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	tmp->n = n;	/* assigning value */
 
 	/* inserting node */
-	tmp->next = prev;
-	prev = tmp;
+	if (!(*head))
+	{
+		tmp->next = NULL;
+		(*head) = tmp;
+	}
+	else
+	{
+		tmp->next = prev;
+		prev = tmp;
+	}
 
 	return (tmp);
 }
