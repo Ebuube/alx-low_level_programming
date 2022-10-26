@@ -2,7 +2,7 @@
 
 /**
  * listint_len - calculates the number of elements in a linked listint_t list
- * @head: points to head of list
+ * @h: points to head of list
  *
  * Return: the number of elements in the list
  */
