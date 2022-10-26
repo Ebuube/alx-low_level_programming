@@ -8,32 +8,20 @@
  */
 int pop_listint(listint_t **head)
 {
-	listint_t *tmp = (*head)->next;
+	listint_t *tmp = 0;
 	int data = 0;
-
-	printf("pop_listint:\tEntry\n");	/* test */
 
 	if ((*head) == NULL)
 	{
 		return (0);
 	}
 
+	tmp = (*head)->next;
 	data = (*head)->n;	/* fetching data (n) */
-
-	printf("\ndata == %d\n", data);	/* test */
-	printf("*head == %p\n", (void *)(*head));	/* test */
-	printf("(*head)->next == %p\n", (void *)(*head)->next);	/* test */
-	printf("tmp == %p\n",(void *)tmp);	/* test */
 
 	free((*head));
 	(*head) = tmp;
 	tmp = NULL;
 
-	printf ("\nAfter deletion\n");	/* test */
-	printf("\ntmp == %p\n", (void *)tmp);	/* test */
-	printf("(*head) == %p\n", (void *)(*head));	/* test */
-	printf("data == %d\n", data);	/* test */
-
-	printf("pop_listint:\tExit\n");	/* test */
 	return (data);
 }
