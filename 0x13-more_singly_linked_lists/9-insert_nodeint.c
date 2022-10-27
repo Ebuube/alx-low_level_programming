@@ -37,32 +37,4 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 	return (new);
 
-#ifdef _CUT_
-	prev = (*head);
-	for (; prev && idx > 0; idx--)
-		prev = prev->next;
-	if (!prev && idx > 0)
-	{
-		return (0);
-	}
-	tmp = malloc(sizeof(listint_t));
-	if (!tmp)
-	{
-		return (0);
-	}
-	tmp->n = n;	/* assigning value */
-
-	/* inserting node */
-	if (idx == 0)
-	{
-		tmp->next = NULL;
-		(*head) = tmp;
-	}
-	else
-	{
-		tmp->next = prev;
-		prev = tmp;
-	}
-#endif
-
 }
