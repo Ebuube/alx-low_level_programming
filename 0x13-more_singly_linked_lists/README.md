@@ -65,3 +65,11 @@ Prototype: int delete_nodeint_at_index(listint_t **head, unsigned int index);
 where index is the index of the node that should be deleted. Index starts at 0
 Returns: 1 if it succeeded, -1 if it failed
 
+The file 100-reverse_listint.c contains a C function that reverses a listint_t linked list.
+
+Prototype: listint_t *reverse_listint(listint_t **head);
+Returns: a pointer to the first node of the reversed list
+You are not allowed to use more than 1 loop.
+You are not allowed to use malloc, free or arrays
+You can only declare a maximum of two variables in your function
+
