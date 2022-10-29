@@ -10,7 +10,8 @@ typedef unsigned long int data_t;
  */
 void print_binary(unsigned long int n)
 {
-	size_t pos = sizeof(data_t) * 8;
+	size_t pos = (sizeof(data_t) * 8) - 1;
+	/* Subtract 1 because index starts from 0 */
 
 	if (n == 0)
 	{
@@ -18,10 +19,9 @@ void print_binary(unsigned long int n)
 		return;
 	}
 
-	for (; !(_getBit(n,pos));)
+	for (; !_getBit(n,pos);)
 		--pos;
 
-	for (; pos > 0; --pos)
+	for (; (pos + 1); --pos)
 		_putchar(_getBit(n,pos) + '0');
-
 }
