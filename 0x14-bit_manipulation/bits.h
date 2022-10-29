@@ -1,5 +1,5 @@
-#ifndef _MY_MAIN_H
-#define _MY_MAIN_H
+#ifndef _BITS_H
+#define _BITS_H
 
 #include <stdio.h>
 
@@ -11,10 +11,5 @@
 #define _setBit(num,pos,val)	((num) | (1 << ((pos) - 1)))
 #define _clearBit(num,pos)	((num) & (~(1 << ((pos) - 1))))
 
-int _putchar(char c);
 
-unsigned int binary_to_uint(const char *b);
-void print_binary(unsigned long int n);
-
-
-#endif	/* _MY_MAIN_H */
+#endif	/* _BITS_H */
