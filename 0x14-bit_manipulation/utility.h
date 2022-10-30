@@ -11,6 +11,7 @@
 
 char *_rev_str(const char *str);
 char *_truncate(const char *str);
+int _count_set_bits(unsigned long int n);
 
 
 #endif	/* _MY_UTILITY_H */
