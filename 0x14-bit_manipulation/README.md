@@ -45,3 +45,8 @@ The file 5-flip_bits.c contains a C function that returns the number of bits you
 Prototype: unsigned int flip_bits(unsigned long int n, unsigned long int m);
 You are not allowed to use the % or / operators
 
+The file 101-get_endianness.c contains a C function that checks the endianness.
+
+Prototype: int get_endianness(void);
+Returns: 0 if big endian, 1 if little endian
+
