@@ -1,3 +1,7 @@
+#ifndef _UTILITY_C
+#define _UTILITY_C
+
+
 #include "utility.h"
 
 /**
@@ -73,6 +77,7 @@ address_t *_find_node_addr(address_t *h, const listint_t *p)
  * _free_list_addr - fress an address_t list
  * @h: address of head pointer to address_t list
  *
+ * Description: sets head to NULL
  * Return: nothing
  */
 void _free_list_addr(address_t **h)
@@ -90,4 +95,8 @@ void _free_list_addr(address_t **h)
 		(*h) = (*h)->next;
 		free(tmp);
 	}
+	(*h) = NULL;	/* set head to NULL */
 }
+
+
+#endif	/* _UTILITY_C */
