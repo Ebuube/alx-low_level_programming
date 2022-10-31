@@ -12,7 +12,7 @@
 int _count_set_bits(unsigned long int n)
 {
 	size_t index = (sizeof(unsigned long int) * 8) - 1;
-	int count = 0;
+	unsigned int count = 0;
 
 	/* gets where bit started from the left */
 	/* avoids index being less than 0 */
