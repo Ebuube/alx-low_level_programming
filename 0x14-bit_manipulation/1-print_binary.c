@@ -19,9 +19,9 @@ void print_binary(unsigned long int n)
 		return;
 	}
 
-	for (; !_getBit(n,pos);)
+	for (; !_getBit(n, pos); )
 		--pos;
 
 	for (; (pos + 1); --pos)
-		_putchar(_getBit(n,pos) + '0');
+		_putchar(_getBit(n, pos) + '0');
 }
