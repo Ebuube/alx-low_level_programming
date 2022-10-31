@@ -11,6 +11,12 @@
 #define _setBit(num,pos,val)	((num) | (1 << (pos)))
 #define _clearBit(num,pos)	((num) & (~(1 << (pos))))
 
+/**
+ * data_t - Typedef for unsigned long int;
+ */
+typedef unsigned long int data_t;
+
+
 int _putchar(char c);
 
 unsigned int binary_to_uint(const char *b);
