@@ -1,5 +1,7 @@
 #include "utility.h"
 
+#include <string.h>
+
 /**
  * _count_set_bits - counts the number of bits having '1' as value in a number,
  * starting from the leftmost non-zero bit in the number's binary
