@@ -15,5 +15,5 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	flips = _count_set_bits(n ^ m);	/* gives the difference b/t n and m */
 
-	return (flips / 2);
+	return (flips);
 }
