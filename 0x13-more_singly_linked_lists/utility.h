@@ -9,15 +9,15 @@
 
 
 /**
- * struct address_s - stores the pointers to listint_t nodes
- * @p_listint: the value of the pointer to listint_t node
+ * struct address_s - stores the pointers
+ * @p_addr: the value of pointer
  * @next: points to the next node of address_t list
  *
  * Description: singly linked list node structure
  */
 typedef struct address_s
 {
-	const listint_t *p_listint;
+	const void *p_addr;
 	struct address_s *next;
 } address_t;
 

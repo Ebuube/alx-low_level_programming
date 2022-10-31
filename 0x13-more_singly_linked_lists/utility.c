@@ -6,7 +6,7 @@
 
 /**
  * _add_node_addr - adds node to an address_t list,
- * and initialiaze its p_listint value to p
+ * and initialiaze its p_addr value to p
  * @h: address of pointer to head node
  * @p: points a node in a listint_t list
  *
@@ -28,7 +28,7 @@ address_t *_add_node_addr(address_t **h, const listint_t *p)
 	{
 		return (0);
 	}
-	tmp->p_listint = p;
+	tmp->p_addr = p;
 
 	if (!(*h))
 	{
@@ -49,7 +49,7 @@ address_t *_add_node_addr(address_t **h, const listint_t *p)
 
 /**
  * _find_node_addr - searches through an address_t list for the node that
- * has its p_listint value to be the same as p
+ * has its p_addr value to be the same as p
  * @h: points to head of address_t list
  * @p: points to a node of listinit_t list
  *
@@ -63,7 +63,7 @@ address_t *_find_node_addr(address_t *h, const listint_t *p)
 	}
 	for (; h; h = h->next)
 	{
-		if (h->p_listint == p)
+		if (h->p_addr == p)
 		{
 			return (h);
 		}
