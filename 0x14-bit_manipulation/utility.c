@@ -1,6 +1,5 @@
 #include "utility.h"
 
-#include <string.h>
 
 /**
  * _count_set_bits - counts the number of bits having '1' as value in a number,
@@ -42,13 +41,19 @@ int _count_set_bits(unsigned long int n)
 char *_rev_str(const char *str)
 {
 	char *mystr = 0;
+	size_t count = 0, len = 0;
 
 	mystr = strdup(str);
+	len = strlen(str);
 	if (!mystr)
 	{
 		return (0);
 	}
-	mystr = strrev(mystr);
+	/* reversal */
+	for (count = 0; (len + 1); count++, len--)
+		mystr[count] = str[len];
+
+	mystr[count] = '\0';
 
 	return (mystr);
 }
