@@ -16,6 +16,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 #ifdef _FLIPS_
 	size_t index = (sizeof(unsigned long int) * 8) - 1;
+
 	change = n ^ m;
 	/* gets where bit started from the left */
 	/* avoids index being less than 0 */
