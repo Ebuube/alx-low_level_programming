@@ -4,7 +4,7 @@
 /* #include "utility.c" */
 
 /**
- * free_lisint_safe - frees a lisint_t list even if it has a loop
+ * free_listint_safe - frees a lisint_t list even if it has a loop
  * @h: address of pointer to head
  *
  * Description: the function goes through the list once
@@ -31,7 +31,7 @@ size_t free_listint_safe(listint_t **h)
 			(*h) = NULL;	/* setting head to NULL */
 			return (count * sizeof(listint_t));
 		}
-		if(!_add_node_addr(&addr_head, (*h)))
+		if (!_add_node_addr(&addr_head, (*h)))
 		{
 			exit(1);
 		}
