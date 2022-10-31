@@ -1,6 +1,6 @@
 #include "main.h"
 
-typedef unsigned long int data_t;
+#define DATA_T unsigned long int;
 
 /**
  * print_binary - prints the binary representation of a number
@@ -10,7 +10,7 @@ typedef unsigned long int data_t;
  */
 void print_binary(unsigned long int n)
 {
-	size_t pos = (sizeof(data_t) * 8) - 1;
+	size_t pos = (sizeof(DATA_T) * 8) - 1;
 	/* Subtract 1 because index starts from 0 */
 
 	if (n == 0)
