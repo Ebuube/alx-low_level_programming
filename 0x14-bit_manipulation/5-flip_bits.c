@@ -11,9 +11,31 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int flips = 0;
+	unsigned long int change = 0;
+	size_t index = (sizeof(unsigned long int) * 8) - 1;
+	unsigned int count = 0;
 
-	flips = _count_set_bits(n ^ m);	/* gives the difference b/t n and m */
+	change = n ^ m;
+	/* gets where bit started from the left */
+	/* avoids index being less than 0 */
+	for (; !(change & (1 << index)) && (index + 1);)
+		--index;
 
-	return (flips);
+	for (; (index + 1) > 0; --index)
+	{
+		if (change & (1 << index))
+			count++;
+	}
+
+	return (count);
+
+#ifdef _FLIPS_
+	difference = n ^ m;
+
+	for (; difference; )
+	{
+		difference &= (difference - 1);
+		counter++
+	}
+#endif
 }

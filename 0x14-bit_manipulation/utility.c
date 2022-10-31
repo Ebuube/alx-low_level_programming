@@ -19,7 +19,7 @@ int _count_set_bits(unsigned long int n)
 	for (; !(n & (1 << index)) && (index + 1);)
 		--index;
 
-	for (; (index + 1); --index)
+	for (; (index + 1) > 0; --index)
 	{
 		if (n & (1 << index))
 			count++;
