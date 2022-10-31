@@ -23,7 +23,7 @@ size_t print_listint_safe(const listint_t *head)
 		exit(98);
 	}
 
-	for (;head; head = head->next; count++)
+	for (; head; head = head->next, count++)
 	{
 		if (_find_node_addr(addr_head, head))
 		{
