@@ -9,7 +9,7 @@
  */
 void print_binary(unsigned long int n)
 {
-	size_t pos = (8 * sizeof (data_t)) - 1;
+	size_t pos = (8 * sizeof(data_t)) - 1;
 	/* Subtract 1 because index starts from 0 */
 
 	if (n == 0)
