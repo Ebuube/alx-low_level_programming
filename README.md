@@ -22,4 +22,6 @@ if the file already exists, truncate it
 if the `filename` is `NULL` return `-1`
 if `text_content` is `NULL` create an empty file
 
+The file 2-append\_text\_to\_file.c contains a C function that appendds text at the end of a file.
+Prototype: `int append_text_to_file(const char *filename, char *text_content)`
 
