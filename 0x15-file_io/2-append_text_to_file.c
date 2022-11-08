@@ -11,7 +11,7 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd_write = 0;
+	int fd_write = 0, bytes = 0, count = 0;
 
 	if (!filename)
 	{
@@ -22,9 +22,9 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	while (text_content)
+	for (count = 0; text_content && text_content[count]; count++)
 	{
-		bytes = write(fd_write, text_content, 1);
+		bytes = write(fd_write, &text_content[count], 1);
 		if (bytes == 0)
 		{
 			/* EOF reachead */
@@ -35,7 +35,6 @@ int append_text_to_file(const char *filename, char *text_content)
 			/* permission to write denied */
 			return (-1);
 		}
-		text_content++;
 	}
 
 	close(fd_write);
