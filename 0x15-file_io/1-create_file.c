@@ -1,6 +1,4 @@
-#include <sys/types.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include "main.h"
 
 /**
  * create_file - creates a file and/or writes data to it
