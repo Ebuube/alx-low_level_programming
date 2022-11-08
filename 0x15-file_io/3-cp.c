@@ -63,9 +63,10 @@ int main(UNUSED int argc, UNUSED char *argv[])
 }
 
 /**
- * cp_file: copies the contents of fd_from to fd_to
+ * cp_file - copies the contents of fd_from to fd_to
  * @fd_from: file descriptor to read from
  * @fd_to: file descriptor to write to
+ * @argv: argument vector for inputs
  *
  * Return: nothing
  */
