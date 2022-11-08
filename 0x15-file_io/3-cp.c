@@ -8,6 +8,8 @@
 #define UNUSED __attribute__((unused))
 #define BUFSIZE 1024
 
+void cp_file(int fd_from, int fd_to, char *argv[]);
+
 /**
  * main - copies the content of a file to another file
  * @argc: argument count
@@ -24,8 +26,7 @@
  */
 int main(UNUSED int argc, UNUSED char *argv[])
 {
-	char buffer[BUFSIZE];
-	int fd_from = 0, fd_to = 0, bytes = 0;
+	int fd_from = 0, fd_to = 0;
 
 	if (argc != 3)
 	{
@@ -44,6 +45,35 @@ int main(UNUSED int argc, UNUSED char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can\'t write to %s\n", argv[2]);
 		exit(99);
 	}
+
+	cp_file(fd_from, fd_to, argv); /* does the main copying of file */
+
+	if (close(fd_from) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can\'t close fd %d\n", fd_from);
+		exit(100);
+	}
+	if (close(fd_to) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can\'t close fd %d\n", fd_to);
+		exit(100);
+	}
+
+	return (0);
+}
+
+/**
+ * cp_file: copies the contents of fd_from to fd_to
+ * @fd_from: file descriptor to read from
+ * @fd_to: file descriptor to write to
+ *
+ * Return: nothing
+ */
+void cp_file(int fd_from, int fd_to, char *argv[])
+{
+	char buffer[BUFSIZE];
+	int bytes = 0;
+
 	while (1)
 	{
 		bytes = read(fd_from, buffer, BUFSIZE);
@@ -63,16 +93,4 @@ int main(UNUSED int argc, UNUSED char *argv[])
 			exit(99);
 		}
 	}
-	if (close(fd_from) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can\'t close fd %d\n", fd_from);
-		exit(100);
-	}
-	if (close(fd_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can\'t close fd %d\n", fd_to);
-		exit(100);
-	}
-
-	return (0);
 }
