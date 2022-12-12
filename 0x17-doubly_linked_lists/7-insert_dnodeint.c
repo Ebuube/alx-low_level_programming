@@ -24,18 +24,22 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 	}
 	tmp->n = n;
-
-	for (count = 0, step = (*h); step && count < idx; count++)
+	for (count = 0, step = (*h); step && (count < idx); count++)
 		step = step->next;
 
-	if (!step && count < idx)
-	{
-		/* Non-existent node */
+	if ((step == NULL) && (count < idx))
+	{	/* Non-existent node */
 		free(tmp);
 		return (NULL);
 	}
-	if (count == 0)
-	{
+	if ((idx == 0) && ((*h) == NULL))
+	{	/* first node of an empty list */
+		tmp->prev = NULL;
+		tmp->next = NULL;
+		(*h) = tmp;
+	}
+	else if (count == 0)
+	{	/* first node of a non-empty list */
 		tmp->next = (*h);
 		tmp->prev = NULL;
 		(*h)->prev = tmp;
@@ -48,6 +52,5 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		step->prev->next = tmp;
 		step->prev = tmp;
 	}
-
 	return (tmp);
 }
