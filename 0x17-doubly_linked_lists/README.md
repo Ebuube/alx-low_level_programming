@@ -36,4 +36,4 @@ ONWUTA EBUBE GIDEON
 
 
 
-[8-delete_dnodeint.c](./8-delte_dnodeint.c): contains a function that deletes a node at an index of a dlistint_t list
+[8-delete_dnodeint.c](./8-delete_dnodeint.c): contains a function that deletes a node at an index of a dlistint_t list
