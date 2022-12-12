@@ -33,3 +33,7 @@ ONWUTA EBUBE GIDEON
 
 
 [7-insert_dnodeint.c](./7-insert_dnodeint.c): contains a function that inserts a new node at a given position
+
+
+
+[8-delete_dnodeint.c](./8-delte_dnodeint.c): contains a function that deletes a node at an index of a dlistint_t list
