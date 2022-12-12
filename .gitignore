@@ -1,4 +1,5 @@
-testmain.c
+# file patterns to ignore
+*main.c
 *.exe
 
 test.c
