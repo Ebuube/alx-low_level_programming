@@ -3,3 +3,6 @@
 *.exe
 
 test.c
+
+# to ignore precompiled object files
+*.o
