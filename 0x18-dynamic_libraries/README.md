@@ -27,4 +27,7 @@ char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 ```
 
+## BashScript
+[1-create_dynamic_lib.sh](./1-create_dynamic_lib.sh): A bashscript to create the dynamic library called `liball.so` from all the `.c` files that are in the current directory.
+
 
