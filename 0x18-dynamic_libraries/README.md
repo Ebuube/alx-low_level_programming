@@ -1,10 +1,13 @@
-#ifndef MAIN_H
-#define MAIN_H
+```
+ONWUTA EBUBE GIDEON
+```
+## Description of the files in this directory
 
+# This directory contains routines for the dynamic library libdynamic.a
+```
 int _putchar(char c);
 int _islower(int c);
 int _isalpha(int c);
-int _isdigit(int c);
 int _abs(int n);
 int _isupper(int c);
 int _isdigit(int c);
@@ -22,5 +25,6 @@ char *_strchr(char *s, char c);
 unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
+```
 
-#endif /* MAIN_H */
+
