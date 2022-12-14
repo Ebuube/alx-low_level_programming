@@ -3,7 +3,7 @@ ONWUTA EBUBE GIDEON
 ```
 ## Description of the files in this directory
 
-# This directory contains routines for the dynamic library libdynamic.a
+# This directory contains routines for the dynamic library libdynamic.so
 ```
 int _putchar(char c);
 int _islower(int c);
