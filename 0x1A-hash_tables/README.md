@@ -9,3 +9,7 @@ Onwuta Ebube Gideon
 
 
 [0-hash_table_create.c](./0-hash_table_create.c): This file contains a C function that creates a hash table
+
+
+
+[1-djb2.c](./1-djb2.c): This file contains a hash function
