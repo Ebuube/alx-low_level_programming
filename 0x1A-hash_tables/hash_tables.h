@@ -2,6 +2,10 @@
 #define _HASH_H
 
 
+/* HEADER FILES */
+#include <stdlib.h>
+
+
 /**
  * struct hash_node_s - Node of a hash table
  *
