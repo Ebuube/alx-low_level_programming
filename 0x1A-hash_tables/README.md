@@ -17,3 +17,11 @@ Onwuta Ebube Gideon
 
 
 [2-key_index.c](./2-key_index.c): calculates the index of a given key in a hash table
+
+
+
+[3-hash_table_set.c](./3-hash_table_set.c): adds an element to the hash table. Using Chaining collision handling
+
+
+
+[print_hash_table.c](./print_hash_table.c): prints the content of a hash table
