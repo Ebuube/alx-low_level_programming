@@ -13,3 +13,7 @@ Onwuta Ebube Gideon
 
 
 [1-djb2.c](./1-djb2.c): This file contains a hash function
+
+
+
+[2-key_index.c](./2-key_index.c): calculates the index of a given key in a hash table
