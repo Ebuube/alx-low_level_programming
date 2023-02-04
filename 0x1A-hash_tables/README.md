@@ -33,3 +33,7 @@ Onwuta Ebube Gideon
 
 
 [5-hash_table_print.c](./5-hash_table_print.c): contains a C function to print a hash table
+
+
+
+[6-hash_table_delete.c](./6-hash_table_delete.c): contains a C function that deletes a hash table
