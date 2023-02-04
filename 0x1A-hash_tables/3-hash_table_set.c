@@ -11,6 +11,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *new_node = NULL;
+	char *key_copy = NULL, *value_copy = NULL;
 	unsigned long int index = 0;
 
 	if (ht == NULL || key == NULL)
@@ -24,29 +25,101 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		return (0);
 	}
-	new_node->key = strdup(key);
-	new_node->value = strdup(value);
-	new_node->next = NULL;
-	if (new_node->key == NULL)
+	key_copy = strdup(key);
+	value_copy = strdup(value);
+	if (key_copy == NULL)
 	{
 		free(new_node);
 		return (0);
 	}
-	if (new_node->value == NULL && value != NULL)
+	if (value_copy == NULL && value != NULL)
 	{
 		free(new_node);
-		free(new_node->key);
+		free(key_copy);
 		return (0);
 	}
 
-	/* link up the new node */
-	index = key_index((unsigned char *)key, ht->size);
+	new_node->key = key_copy;
+	new_node->value = value_copy;
+
+	if (update_node(ht, new_node) != NULL)
+	{	/* key already exists and has been updated */
+		return (1);
+	}
+	else if (insert_node(ht, new_node) == NULL)
+	{
+		return (0);
+	}
+
+	return (1);
+}
+
+
+/**
+ * update_node - updates an already existing node
+ *
+ * @ht: hash table to look for node
+ * @node: node to update
+ * Return: the address of the updated node if successful
+ * else return NULL
+ */
+hash_node_t *update_node(const hash_table_t *ht, const hash_node_t *node)
+{
+	hash_node_t *tmp = NULL;
+	unsigned long int index = 0;
+
+	if (ht == NULL || node == NULL)
+	{
+		fprintf(stderr, "\nERROR: TRYING TO REFRENCE NULL\n");
+		fprintf("\thash table: 0x%p\tnode: 0x%p\n",
+				(void *)ht, (void *)node);
+		return (NULL);
+	}
+	index = key_index((unsigned char *)node->key, ht->size);
+
+	for (tmp = ht->array[index]; tmp != NULL; tmp = tmp->next)
+	{
+		if (strcmp(tmp->key, node->key) == 0)
+		{
+			tmp->value = node->value;
+			return (tmp);
+		}
+	}
+
+	return (NULL);
+}
+
+
+/**
+ * insert_node - inserts a node into a hash table
+ *
+ * @ht: hash table to insert the node
+ * @node: node to insert
+ * Return: the address of the updated node if successful
+ * else return NULL
+ */
+hash_node_t *insert_node(const hash_table_t *ht, const hash_node_t *node)
+{
+	unsigned long int index = 0;
+
+	if (ht == NULL || node == NULL)
+	{
+		fprintf(stderr, "\nERROR: TRYING TO REFRENCE NULL\n");
+		fprintf("\thash table: 0x%p\tnode: 0x%p\n",
+				(void *)ht, (void *)node);
+		return (NULL);
+	}
+	index = key_index((unsigned char *)node->key, ht->size);
+
 	if (ht->array[index] == NULL)
-		ht->array[index] = new_node;	/* first item in the list */
+	{
+		ht->array[index] = node;
+	}
 	else
 	{
-		new_node->next = ht->array[index];
-		ht->array[index] = new_node;
+		node->next = ht->arrray[index];
+		ht->array[index] = node;
 	}
-	return (1);
+
+	return (node);
 }
