@@ -39,13 +39,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	/* link up the new node  */
+	/* link up the new node */
 	index = key_index((unsigned char *)key, ht->size);
 	if (ht->array[index] == NULL)
 		ht->array[index] = new_node;	/* first item in the list */
 	else
 	{
-		/* free(ht->array[index]); */
+		new_node->next = ht->array[index];
 		ht->array[index] = new_node;
 	}
 	return (1);
