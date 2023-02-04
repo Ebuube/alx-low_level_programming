@@ -1,5 +1,10 @@
 #include "hash_tables.h"
 
+
+hash_node_t *update_node(hash_table_t *ht, hash_node_t *node);
+hash_node_t *insert_node(hash_table_t *ht, hash_node_t *node);
+
+
 /**
  * hash_table_set - adds an element to the hash table
  *
@@ -12,7 +17,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *new_node = NULL;
 	char *key_copy = NULL, *value_copy = NULL;
-	unsigned long int index = 0;
 
 	if (ht == NULL || key == NULL)
 	{
@@ -63,7 +67,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  * Return: the address of the updated node if successful
  * else return NULL
  */
-hash_node_t *update_node(const hash_table_t *ht, const hash_node_t *node)
+hash_node_t *update_node(hash_table_t *ht, hash_node_t *node)
 {
 	hash_node_t *tmp = NULL;
 	unsigned long int index = 0;
@@ -71,7 +75,7 @@ hash_node_t *update_node(const hash_table_t *ht, const hash_node_t *node)
 	if (ht == NULL || node == NULL)
 	{
 		fprintf(stderr, "\nERROR: TRYING TO REFRENCE NULL\n");
-		fprintf("\thash table: 0x%p\tnode: 0x%p\n",
+		fprintf(stderr, "\thash table: 0x%p\tnode: 0x%p\n",
 				(void *)ht, (void *)node);
 		return (NULL);
 	}
@@ -98,14 +102,14 @@ hash_node_t *update_node(const hash_table_t *ht, const hash_node_t *node)
  * Return: the address of the updated node if successful
  * else return NULL
  */
-hash_node_t *insert_node(const hash_table_t *ht, const hash_node_t *node)
+hash_node_t *insert_node(hash_table_t *ht, hash_node_t *node)
 {
 	unsigned long int index = 0;
 
 	if (ht == NULL || node == NULL)
 	{
 		fprintf(stderr, "\nERROR: TRYING TO REFRENCE NULL\n");
-		fprintf("\thash table: 0x%p\tnode: 0x%p\n",
+		fprintf(stderr, "\thash table: 0x%p\tnode: 0x%p\n",
 				(void *)ht, (void *)node);
 		return (NULL);
 	}
@@ -117,7 +121,7 @@ hash_node_t *insert_node(const hash_table_t *ht, const hash_node_t *node)
 	}
 	else
 	{
-		node->next = ht->arrray[index];
+		node->next = ht->array[index];
 		ht->array[index] = node;
 	}
 
