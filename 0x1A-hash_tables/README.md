@@ -25,3 +25,7 @@ Onwuta Ebube Gideon
 
 
 [print_hash_table.c](./print_hash_table.c): prints the content of a hash table
+
+
+
+[4-hash_table_get.c](.4-hash_table_get.c): contains a C function that retrieves a value associated with a key
