@@ -1,3 +1,3 @@
 # C - Makefiles
 
-Practice how to create official makefiles that are generic and easy to maintain.
+Mastering how to create official and higly generic makefiles that are easy to maintain update
