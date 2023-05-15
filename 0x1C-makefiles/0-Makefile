@@ -1,0 +1,16 @@
+# C compiler to be used
+CC = gcc
+
+# objects
+objects = school.o main.o
+
+# Name of the executable
+exec = school
+
+# rules
+
+
+all : $(objects)
+	$(CC) $(objects) -o $(exec)
+
+$(objects): m.h
