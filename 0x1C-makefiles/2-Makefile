@@ -1,0 +1,18 @@
+# C Compiler to use
+CC = gcc
+
+# source files
+SRC = school.c main.c
+
+# object files
+OBJ = school.o main.o
+
+# Name of the executable
+NAME = school
+
+# rules
+
+all : $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+$(OBJ) : $(SRC) m.h
