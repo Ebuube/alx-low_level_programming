@@ -14,6 +14,10 @@ SRC = school.c main.c
 # object files
 OBJ = $(SRC:.c=.o)	# the string '.c' is substituted with '.o'
 
+# essential files
+# wildcard is evaluated once and assigned to the variable because of ':='
+ESS_FILES := "$(wildcard m.h)"
+
 # vim temporary files
 VIM_TMP = $(wildcard *.swp)
 
@@ -24,6 +28,9 @@ EMACS_TMP = $(wildcard *~)
 NAME = school
 
 # rules
+# makefile should not compile if `m.h` file is missing
+
+ifneq ($(strip $(ESS_FILES)), "")
 
 all : $(SRC:.c=.o) m.h # recompile only updated source files
 	$(CC) $? -o $(NAME)
@@ -40,3 +47,5 @@ fclean : oclean clean	# delete al Emacs and Vim temp files, the executable \
 	and the object files
 
 re : oclean all	# forcefully recompile all the source files
+
+endif
