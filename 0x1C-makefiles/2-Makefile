@@ -16,3 +16,4 @@ all : $(OBJ)
 	$(CC) $? -o $(NAME)
 
 $(OBJ) : $(SRC) m.h
+	$(CC) $? -o $@
