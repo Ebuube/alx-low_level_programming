@@ -13,7 +13,5 @@ NAME = school
 # rules
 
 all : $(OBJ)
-	$(CC) $? -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
-$(OBJ) : $(SRC) m.h
-	$(CC) $? -o $@
