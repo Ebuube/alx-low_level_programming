@@ -1,6 +1,7 @@
 # file patterns to ignore
 *main.c
 *.exe
+__pycache__	# ignore caches
 
 test.c
 
