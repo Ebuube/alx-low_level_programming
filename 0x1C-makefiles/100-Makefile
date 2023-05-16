@@ -1,0 +1,42 @@
+# C Compiler to use
+CC = gcc
+
+# C flags to use
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Remove command to use
+# RM = rm -rf
+# Not allowed to use the RM file
+
+# source files
+SRC = school.c main.c
+
+# object files
+OBJ = $(SRC:.c=.o)	# the string '.c' is substituted with '.o'
+
+# vim temporary files
+VIM_TMP = $(wildcard *.swp)
+
+# emacs temporay files
+EMACS_TMP = $(wildcard *~)
+
+# Name of the executable
+NAME = school
+
+# rules
+
+all : $(SRC:.c=.o) m.h # recompile only updated source files
+	$(CC) $? -o $(NAME)
+
+.PHONY : clean oclean fclean re
+
+clean : # delete all Emacs and Vim temp files along with executable
+	$(RM) $(NAME) $(VIM_TMP) $(EMACS_TMP)
+
+oclean : # delete the object files
+	$(RM) $(SRC:.c=.o)
+
+fclean : oclean clean	# delete al Emacs and Vim temp files, the executable \
+	and the object files
+
+re : oclean all	# forcefully recompile all the source files
