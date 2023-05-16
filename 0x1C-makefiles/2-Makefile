@@ -14,4 +14,3 @@ NAME = school
 
 all : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-
