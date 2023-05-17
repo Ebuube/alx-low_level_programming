@@ -1,6 +1,6 @@
 # C - Makefiles
 
-Mastering how to create official and highly generic makefiles that are easy to maintain update
+Mastering how to create official and highly generic makefiles that are easy to maintain and update.
 
 ## 0. make -f 0-Makefile
 Create your first Makefile.
