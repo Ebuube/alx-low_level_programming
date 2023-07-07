@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <stdio.h>	/* test */
-
 
 /* DATA STRUCTURES */
 
