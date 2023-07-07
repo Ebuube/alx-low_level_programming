@@ -28,5 +28,9 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	ht->size = size;	/* Assign size on successful allocation */
 
+	/* Initialize the array/bucket */
+	for (; size > 0; size--)
+		ht->array[size - 1] = NULL;
+
 	return (ht);
 }
