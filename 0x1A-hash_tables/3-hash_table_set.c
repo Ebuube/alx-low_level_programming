@@ -43,7 +43,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{/* New node creation error */
 		return (0);
 	}
-		(void *)tmp, key);	/* test */
 
 	/* link node */
 	if (ht->array[index] != NULL)
