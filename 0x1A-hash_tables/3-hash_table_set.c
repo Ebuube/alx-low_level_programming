@@ -72,7 +72,7 @@ hash_node_t *_get_node(hash_node_t *head, const char *key)
 	for (; head != NULL; head = head->next)
 	{
 		if (strcmp(head->key, key) == 0)
-		{
+		{/* Found match */
 			return (head);
 		}
 	}
@@ -111,12 +111,12 @@ hash_node_t *_new_node(const char *key, const char *value)
 
 	/* Replace tmp with update_str(new->key, key); */
 	if (update_str(&(new->key), key) == NULL)
-	{
+	{/* Update failure */
 		free(new);
 		return (NULL);
 	}
 	if (update_str(&(new->value), value) == NULL)
-	{/* Duplication error */
+	{/* Update error */
 		free(new);
 		return (NULL);
 	}
