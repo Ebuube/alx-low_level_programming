@@ -1,6 +1,5 @@
 #include "lists.h"
 
-
 /**
  * dlistint_len - counts the number of nodes in a dlistint_t list
  * @h: points to head of a dlistint_t list
