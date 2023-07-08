@@ -23,8 +23,9 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 
 	tmp = (*h);
-	for (; tmp != NULL && i < idx; i++)
+	for (; idx != 0 && tmp != NULL && i < idx; i++)
 		tmp = tmp->next;
+
 	if (tmp == NULL && i != idx)
 	{/* Could not find index */
 		return (NULL);
