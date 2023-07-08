@@ -15,15 +15,17 @@
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *tmp = NULL, *new = NULL;
+	unsigned int i = 0;
 
 	if (h == NULL)
 	{/* Invalid address of head pointer to list */
 		return (NULL);
 	}
 
-	for (tmp = (*h); tmp != NULL && idx > 0; idx--)
+	tmp = (*h);
+	for (; tmp != NULL && i < idx; i++)
 		tmp = tmp->next;
-	if (tmp == NULL && idx != 0)
+	if (tmp == NULL && i != idx)
 	{/* Could not find index */
 		return (NULL);
 	}
@@ -34,13 +36,15 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 	}
 	new->next = tmp;
-	new->prev = tmp->prev;
+	new->prev = (tmp == NULL) ? NULL : tmp->prev;
 	new->n = n;
 
-	if (tmp->next != NULL)
-		tmp->next->prev = new;
-	if (tmp->prev != NULL)
+	if (tmp != NULL && tmp->prev != NULL)
 		tmp->prev->next = new;
+	if (tmp != NULL)
+		tmp->prev = new;
+	if (idx == 0)
+		(*h) = new;
 
 	return (new);
 }
