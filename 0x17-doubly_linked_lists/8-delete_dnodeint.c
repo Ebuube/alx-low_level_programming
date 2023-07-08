@@ -12,35 +12,24 @@
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *step = 0;
-	unsigned int count = 0;
+	dlistint_t *tmp = NULL;
+	size_t i = 0;
 
-	if (!head || !(*head))
+	if (head == NULL || (*head) == NULL)
 	{
 		return (-1);
 	}
 
-	for (count = 0, step = (*head); step && count < index; count++)
-		step = step->next;
+	for (tmp = (*head); tmp->next != NULL && i < index; i++)
+		tmp = tmp->next;
 
-	if ((*head)->next == NULL && count == 0)
-	{
-		/* list with a single node */
-		free(*head);
-		(*head) = NULL;
-	}
-	else if ((*head)->next != NULL && count == 0)
-	{
-		/* first node of a list */
-		(*head) = (*head)->next;
-		(*head)->prev = NULL;
-		free(step);
-	}
-	else
-	{
-		step->prev->next = step->next;
-		free(step);
-	}
+	if (index == 0)
+		(*head) = tmp->next;
+	if (tmp->prev != NULL)
+		tmp->prev->next = tmp->next;
+	if (tmp->next != NULL)
+		tmp->next->prev = tmp->prev;
 
+	free(tmp);
 	return (1);
 }
