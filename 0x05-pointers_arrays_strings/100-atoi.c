@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>	/* test */
 
 /* FUNCTION PROTOTYPES */
 
@@ -68,7 +69,10 @@ int _isspace(char c)
  */
 int _getsign(char *s, unsigned int *pos)
 {
-	int sign_found = 0, sign = 1, i = 0;
+	int sign = 1, i = 0;
+#ifdef test
+	int sign_found = 0;
+#endif
 
 	if (pos == 0)
 	{
@@ -76,13 +80,15 @@ int _getsign(char *s, unsigned int *pos)
 	}
 	i = (*pos);
 
-	for (i = 0; s != 0 && s[i] != '\0' && !_isdigit(s[i]); i++)
+	for (i = 0; s != 0 && s[i] != '\0'; i++)
 	{
-		if (!(s[i] == 43 || s[i] == 45) && !_isdigit(s[i]) &&
-			!_isspace(s[i]))
-		{/* space found between signs */
-			continue;
+		if (_isdigit(s[i]))
+		{
+			/* printf("_getassign(): digit found = %c\n", s[i]); */
+			break;
 		}
+
+#ifdef test
 		if (s[i] != 43 && s[i] != 45 && !_isdigit(s[i]))
 		{/* check against characters except '+' '-' */
 			if (sign_found == 1)
@@ -91,20 +97,18 @@ int _getsign(char *s, unsigned int *pos)
 			}
 			continue;
 		}
+#endif
 
 		if (s[i] == 43)		/* positive sign */
 		{
 			sign *= +1;
-			sign_found = 1;
+/*			sign_found = 1; */
 		}
 		if (s[i] == 45)		/* negative sign */
 		{
 			sign *= -1;
-			sign_found = 1;
+/*			sign_found = 1; */
 		}
-
-		if (_isdigit(s[i]))	/* digit */
-			break;
 	}
 
 	(*pos) = i;	/* update position */
