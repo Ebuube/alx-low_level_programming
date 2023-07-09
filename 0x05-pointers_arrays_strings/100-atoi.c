@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>	/* test */
 
 
 /* FUNCTION PROTOTYPES */
@@ -22,8 +21,6 @@ int _atoi(char *s)
 
 	sign = _getsign(s, (unsigned int *)&i);
 	num = _getnum(s, (unsigned int *)&i);
-
-	printf("sign = %d | num = %d\n", sign, num);
 
 	num *= sign;	/* apply sign */
 
@@ -75,7 +72,7 @@ int _getsign(char *s, unsigned int *pos)
 {
 	int sign_found = 0, sign = 1, i = 0;
 
-	if (pos == NULL)
+	if (pos == 0)
 	{
 		return (0);
 	}
@@ -83,7 +80,6 @@ int _getsign(char *s, unsigned int *pos)
 
 	for (i = 0; s != 0 && s[i] != '\0'; i++)
 	{
-		printf("_getsign(): pos = %d\tchar = '%c'\n", i, s[i]);	/* test */
 		if (_isspace(s[i]) && sign_found == 1 && !_isdigit(s[i]))	/* space */
 		{/* space found between signs */
 			continue;
@@ -94,7 +90,6 @@ int _getsign(char *s, unsigned int *pos)
 			{/* a character intercepted sign and digits */
 				sign = 1;
 			}
-			printf("_getsign(): char gotten = '%c'\n", s[i]);	/* test */
 			continue;
 		}
 
@@ -109,11 +104,8 @@ int _getsign(char *s, unsigned int *pos)
 			sign_found = 1;
 		}
 
-		printf("_getsign(): sign = '%d'\n", sign);	/* test */
-
 		if (_isdigit(s[i]))	/* digit */
 			break;
-		printf("_getsign(): sign_found = %d\n", sign_found);	/* test */
 	}
 
 	(*pos) = i;	/* update position */
@@ -136,7 +128,7 @@ unsigned int _getnum(char *s, unsigned int *pos)
 	unsigned int num = 0;
 	int digit_found = 0, i = 0;
 
-	if (pos == NULL)
+	if (pos == 0)
 	{
 		return (0);
 	}
@@ -144,7 +136,6 @@ unsigned int _getnum(char *s, unsigned int *pos)
 
 	for (; s != 0 && s[i] != '\0'; i++)
 	{
-		printf("_getnum(): pos = %d\tchar = '%c'\n", i, s[i]);	/* test */
 		if (_isdigit(s[i]) && digit_found == 0)
 		{/* first digit found */
 			digit_found = 1;
@@ -156,13 +147,9 @@ unsigned int _getnum(char *s, unsigned int *pos)
 
 		if (_isdigit(s[i]))
 		{/* include new digit */
-			printf("_getnum(): new digit = '%c'\n", s[i]);	/* test */
-			printf("_getnum(): old number = %d\n", num);	/* test */
 			num *= 10;
 			num += s[i] - '0';
-			printf("_getnum(): updated number = %d\n", num);	/* test */
 		}
-		printf("_getnum(): digit_found = %d\n", digit_found);	/* test */
 	}
 
 	(*pos) = i;	/* update position */
