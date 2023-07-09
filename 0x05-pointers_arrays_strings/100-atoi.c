@@ -4,6 +4,8 @@
 
 /* FUNCTION PROTOTYPES */
 
+int _isdigit(char c);
+int _isspace(char c);
 int _getsign(char *s, unsigned int *i);
 unsigned int _getnum(char *s, unsigned int *i);
 
