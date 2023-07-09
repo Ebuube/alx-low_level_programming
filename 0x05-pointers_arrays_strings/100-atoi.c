@@ -82,11 +82,11 @@ int _getsign(char *s, unsigned int *pos)
 	for (i = 0; s != 0 && s[i] != '\0'; i++)
 	{
 		printf("_getsign(): pos = %d\tchar = '%c'\n", i, s[i]);	/* test */
-		if (s[i] == 32 && sign_found == 1 && !(s[i] >= 48 && s[i] == 57))	/* space */
+		if (_isspace(s[i]) && sign_found == 1 && !_isdigit(s[i]))	/* space */
 		{/* space found between signs */
 			continue;
 		}
-		if (s[i] != 43 && s[i] != 45 && !(s[i] >= 48 && s[i] <= 57))
+		if (s[i] != 43 && s[i] != 45 && !_isdigit(s[i]))
 		{/* check against characters except '+' '-' */
 			if (sign_found == 1)
 			{/* a character intercepted sign and digits */
@@ -109,7 +109,7 @@ int _getsign(char *s, unsigned int *pos)
 
 		printf("_getsign(): sign = '%d'\n", sign);	/* test */
 
-		if ((s[i] >= 48 && s[i] <= 57))	/* digit */
+		if (_isdigit(s[i]))	/* digit */
 			break;
 		printf("_getsign(): sign_found = %d\n", sign_found);	/* test */
 	}
@@ -143,16 +143,16 @@ unsigned int _getnum(char *s, unsigned int *pos)
 	for (; s != 0 && s[i] != '\0'; i++)
 	{
 		printf("_getnum(): pos = %d\tchar = '%c'\n", i, s[i]);	/* test */
-		if ((s[i] >= 48 && s[i] <= 57) && digit_found == 0)
+		if (_isdigit(s[i]) && digit_found == 0)
 		{/* first digit found */
 			digit_found = 1;
 			num = s[i] - '0';
 			continue;
 		}
-		else if (!((s[i] >= 48 && s[i] <= 57)) && digit_found == 1)
+		else if (!(_isdigit(s[i])) && digit_found == 1)
 			break;
 
-		if ((s[i] >= 48 && s[i] <= 57))
+		if (_isdigit(s[i]))
 		{/* include new digit */
 			printf("_getnum(): new digit = '%c'\n", s[i]);	/* test */
 			printf("_getnum(): old number = %d\n", num);	/* test */
