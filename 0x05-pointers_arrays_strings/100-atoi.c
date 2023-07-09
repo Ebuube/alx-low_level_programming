@@ -23,7 +23,7 @@ int _atoi(char *s)
 	sign = _getsign(s, (unsigned int *)&i);
 	num = _getnum(s, (unsigned int *)&i);
 
-	return (num * sign);
+	return ((int) (num * sign));
 }
 
 /**
