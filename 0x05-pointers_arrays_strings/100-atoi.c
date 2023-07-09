@@ -2,11 +2,6 @@
 #include <stdio.h>	/* test */
 
 
-/* DIRECTIVES FOR TEST */
-
-#define _USE_SIGN_INPLACE
-#define _USE_NUM_INPLACE
-
 /* FUNCTION PROTOTYPES */
 
 int _getsign(char *s, unsigned int *i);
@@ -22,80 +17,11 @@ unsigned int _getnum(char *s, unsigned int *i);
 int _atoi(char *s)
 {
 	int sign = 1, i = 0, num = 1;
-#ifdef _USE_SIGN_INPLACE
-	int sign_found = 0;
-#endif
-#ifdef _USE_NUM_INPLACE
-	int digit_found = 0;
-#endif
 
-	printf("1st loop: Entry\n");	/* test */
-#ifdef _USE_SIGN_INPLACE
-	for (i = 0; s != 0 && s[i] != '\0'; i++)
-	{
-		printf("1st loop: pos = %d\tchar = '%c'\n", i, s[i]);	/* test */
-		if (s[i] == 32 && sign_found == 1 && !(s[i] >= 48 && s[i] == 57))	/* space */
-		{/* space found between signs */
-			continue;
-		}
-		if (s[i] != 43 && s[i] != 45 && !(s[i] >= 48 && s[i] <= 57))
-		{/* check against characters except '+' '-' */
-			if (sign_found == 1)
-			{/* a character intercepted sign and digits */
-				sign = 1;
-			}
-			printf("1st loop: char gotten = '%c'\n", s[i]);	/* test */
-			continue;
-		}
-
-		if (s[i] == 43)		/* positive sign */
-		{
-			sign *= +1;
-			sign_found = 1;
-		}
-		if (s[i] == 45)		/* negative sign */
-		{
-			sign *= -1;
-			sign_found = 1;
-		}
-
-		printf("1st loop: sign = '%d'\n", sign);	/* test */
-
-		if ((s[i] >= 48 && s[i] <= 57))	/* digit */
-			break;
-		printf("1st loop: sign_found = %d\n", sign_found);	/* test */
-	}
-#else
 	sign = _getsign(s, (unsigned int *)&i);
-#endif
-	printf("1st loop: Exit\n");	/* test */
-
-#ifdef _USE_NUM_INPLACE
-	for (; s != 0 && s[i] != '\0'; i++)
-	{
-		printf("2nd loop: pos = %d\tchar = '%c'\n", i, s[i]);	/* test */
-		if ((s[i] >= 48 && s[i] <= 57) && digit_found == 0)
-		{/* first digit found */
-			digit_found = 1;
-			num = s[i] - '0';
-			continue;
-		}
-		else if (!((s[i] >= 48 && s[i] <= 57)) && digit_found == 1)
-			break;
-
-		if ((s[i] >= 48 && s[i] <= 57))
-		{/* include new digit */
-			printf("2nd loop: new digit = '%c'\n", s[i]);	/* test */
-			printf("2nd loop: old number = %d\n", num);	/* test */
-			num *= 10;
-			num += s[i] - '0';
-			printf("2nd loop: updated number = %d\n", num);	/* test */
-		}
-		printf("2nd loop: digit_found = %d\n", digit_found);	/* test */
-	}
-#else
 	num = _getnum(s, (unsigned int *)&i);
-#endif
+
+	printf("sign is = %d\tnum is = %d\n", sign, num);
 
 	num *= sign;	/* apply sign */
 
