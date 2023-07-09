@@ -1,5 +1,4 @@
 #include "main.h"
-#include <limits.h>
 
 /* FUNCTION PROTOTYPES */
 
@@ -79,7 +78,8 @@ int _getsign(char *s, unsigned int *pos)
 
 	for (i = 0; s != 0 && s[i] != '\0'; i++)
 	{
-		if (_isspace(s[i]) && sign_found == 1 && !_isdigit(s[i]))	/* space */
+		if (!(s[i] == 43 || s[i] == 45) && !_isdigit(s[i]) &&
+			!_isspace(s[i]))
 		{/* space found between signs */
 			continue;
 		}
