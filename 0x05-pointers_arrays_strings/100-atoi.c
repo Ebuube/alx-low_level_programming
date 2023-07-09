@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <limits.h>
 
 /* FUNCTION PROTOTYPES */
 
@@ -17,14 +17,13 @@ unsigned int _getnum(char *s, unsigned int *i);
  */
 int _atoi(char *s)
 {
-	int sign = 1, i = 0, num = 1;
+	unsigned int num = 1;
+	int sign = 1, i = 0;
 
 	sign = _getsign(s, (unsigned int *)&i);
 	num = _getnum(s, (unsigned int *)&i);
 
-	num *= sign;	/* apply sign */
-
-	return (num);
+	return (num * sign);
 }
 
 /**
