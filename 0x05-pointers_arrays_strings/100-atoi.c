@@ -70,9 +70,6 @@ int _isspace(char c)
 int _getsign(char *s, unsigned int *pos)
 {
 	int sign = 1, i = 0;
-#ifdef test
-	int sign_found = 0;
-#endif
 
 	if (pos == 0)
 	{
@@ -84,30 +81,16 @@ int _getsign(char *s, unsigned int *pos)
 	{
 		if (_isdigit(s[i]))
 		{
-			/* printf("_getassign(): digit found = %c\n", s[i]); */
 			break;
 		}
-
-#ifdef test
-		if (s[i] != 43 && s[i] != 45 && !_isdigit(s[i]))
-		{/* check against characters except '+' '-' */
-			if (sign_found == 1)
-			{/* a character intercepted sign and digits */
-				sign = 1;
-			}
-			continue;
-		}
-#endif
 
 		if (s[i] == 43)		/* positive sign */
 		{
 			sign *= +1;
-/*			sign_found = 1; */
 		}
 		if (s[i] == 45)		/* negative sign */
 		{
 			sign *= -1;
-/*			sign_found = 1; */
 		}
 	}
 
