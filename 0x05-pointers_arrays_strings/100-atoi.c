@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>	/* test */
 
 /* FUNCTION PROTOTYPES */
 
