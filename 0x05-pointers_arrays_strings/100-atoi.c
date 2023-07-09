@@ -21,7 +21,7 @@ int _atoi(char *s)
 	sign = _getsign(s, (unsigned int *)&i);
 	num = _getnum(s, (unsigned int *)&i);
 
-	printf("sign is = %d\tnum is = %d\n", sign, num);
+	printf("sign = %d | num = %d\n", sign, num);
 
 	num *= sign;	/* apply sign */
 
@@ -38,7 +38,7 @@ int _isdigit(char c)
 {
 	if (c >= 48 && c <= 57)
 	{
-		return(1);
+		return (1);
 	}
 
 	return (0);
@@ -56,14 +56,14 @@ int _isspace(char c)
 	{
 		return (1);
 	}
-	
+
 	return (0);
 }
 
 
 /**
  * _getsign - calculate the sign from a string
- * @str: string to access
+ * @s: string to access
  * @pos: address of position to start searching from
  *
  * Description: pos is updated to show current position search stopped
