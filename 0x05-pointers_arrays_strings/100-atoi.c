@@ -76,7 +76,7 @@ int _getsign(char *s, unsigned int *pos)
 	}
 	i = (*pos);
 
-	for (i = 0; s != 0 && s[i] != '\0'; i++)
+	for (i = 0; s != 0 && s[i] != '\0' && !_isdigit(s[i]); i++)
 	{
 		if (!(s[i] == 43 || s[i] == 45) && !_isdigit(s[i]) &&
 			!_isspace(s[i]))
