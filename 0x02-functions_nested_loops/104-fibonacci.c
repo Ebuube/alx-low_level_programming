@@ -7,19 +7,19 @@
  */
 int main(void)
 {
-	unsigned long num, prev_1 = 1, prev_2 = 2;
+	long double num = 0, prev_2 = 1, prev_1 = 2;
 	int limit = 98, step;
 
 	printf("1, 2, ");
-	for (step = 0; step < limit - 2; step++)
+	for (step = 2; step < limit; step++)
 	{
 		num = prev_1 + prev_2;
-		if (step != limit - 3)
-			printf("%lu, ", num);
-		else
-			printf("%lu", num);
-		prev_1 = prev_2;
-		prev_2 = num;
+		printf("%0.0Lf", num);
+		if (step != limit - 1)
+			printf(", ");
+
+		prev_2 = prev_1;
+		prev_1 = num;
 	}
 	putchar('\n');
 	return (0);
