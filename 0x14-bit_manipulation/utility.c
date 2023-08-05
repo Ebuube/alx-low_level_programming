@@ -5,6 +5,7 @@
  * _count_set_bits - counts the number of bits having '1' as value in a number,
  * starting from the leftmost non-zero bit in the number's binary
  * representation
+ * @n: the number to read
  *
  * Description: index starts from 0, being the index of rightmost bit
  * Return: the result of the calculation
@@ -50,8 +51,8 @@ char *_rev_str(const char *str)
 		return (0);
 	}
 	/* reversal */
-	for (count = 0; (len + 1); count++, len--)
-		mystr[count] = str[len];
+	for (count = 0; count < len; count++)
+		mystr[count] = str[len - count - 1];
 
 	mystr[count] = '\0';
 

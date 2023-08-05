@@ -4,7 +4,7 @@
 
 /**
  * binary_to_uint - converts a binary number to an unsigned int
- * b: string containing 1's and 0's
+ * @b: string containing 1's and 0's
  *
  * Description: returns 0 if one or more chars in the string b that
  * is not 0 or 1
