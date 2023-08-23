@@ -10,6 +10,9 @@ SRC = main.c school.c
 # Objects
 OBJ = $(SRC:.c=.o)
 
+# The remove command
+RM = rm -rf
+
 # The executable
 NAME = school
 
