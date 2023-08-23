@@ -16,6 +16,9 @@ ESF := "$(wildcard m.h)"
 # Sources
 SRC = main.c school.c
 
+# Objects
+OBJ = $(OBJ:.c=.o)
+
 # The executable
 NAME = school
 
@@ -23,25 +26,18 @@ NAME = school
 
 ifneq ($(strip $(ESF)), "")
 
-all: $(SRC)
+all: $(SRC:.c=.o) m.h
 	$(CC) $? -o $(NAME)
 
-$(OBJ): m.h
-
-.PHONY: clean \
-	oclean \
-	fclean \
-	re
+.PHONY: clean oclean fclean re
 
 clean: # delete all temporary files along with the executable
 	$(RM) $(ETMP) $(VTMP) $(NAME)
 
 oclean: # delete the object files
-	$(RM) $(OBJ)
+	$(RM) $(SRC:.c=.o)
 
-fclean: # delete all temporary files, executable and the object files
-	$(RM) $(VTMP) $(ETMP) $(NAME)
-	$(RM) $(OBJ)
+fclean: oclean clean # delete all temporary files, executable and the object files
 
 re: oclean all # force recompilation of all source files
 
