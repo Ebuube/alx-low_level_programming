@@ -4,17 +4,17 @@ CC = gcc
 # Compiler flags
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
-# Temporary files
-TMP = $(wildcard *~ *.swp) # Emacs and Vim temporary files
+# Emacs temporary files
+ETMP = $(wildcard *~)
+
+# Vim temporary files
+VTMP = $(wildcard *.swp)
 
 # Essential file
 ESF := "$(wildcard m.h)"
 
 # Sources
 SRC = main.c school.c
-
-# Objects
-OBJ = $(SRC:.c=.o)
 
 # The executable
 NAME = school
@@ -23,7 +23,7 @@ NAME = school
 
 ifneq ($(strip $(ESF)), "")
 
-all: $(OBJ)
+all: $(SRC)
 	$(CC) $? -o $(NAME)
 
 $(OBJ): m.h
@@ -34,13 +34,13 @@ $(OBJ): m.h
 	re
 
 clean: # delete all temporary files along with the executable
-	$(RM) $(TMP) $(NAME)
+	$(RM) $(ETMP) $(VTMP) $(NAME)
 
 oclean: # delete the object files
 	$(RM) $(OBJ)
 
 fclean: # delete all temporary files, executable and the object files
-	$(RM) $(TMP) $(NAME)
+	$(RM) $(VTMP) $(ETMP) $(NAME)
 	$(RM) $(OBJ)
 
 re: oclean all # force recompilation of all source files
