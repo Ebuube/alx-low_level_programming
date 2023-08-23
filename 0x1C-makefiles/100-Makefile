@@ -30,7 +30,7 @@ $(OBJ): m.h
 
 .PHONY: clean \
 	oclean \
-	fcelan \
+	fclean \
 	re
 
 clean: # delete all temporary files along with the executable
@@ -43,6 +43,6 @@ fclean: # delete all temporary files, executable and the object files
 	$(RM) $(TMP) $(NAME)
 	$(RM) $(OBJ)
 
-re: oclean all# force recompilation of all source files
+re: oclean all # force recompilation of all source files
 
 endif
