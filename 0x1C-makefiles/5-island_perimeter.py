@@ -24,7 +24,7 @@ def island_perimeter(grid):
     if type(grid) is list:
         if len(grid) == 0:
             print("Error: grid is emtpy")
-            return None
+            return 0
 
         # Ensure each row is of equal length
         row_len = len(grid[0])
@@ -33,15 +33,15 @@ def island_perimeter(grid):
             # Ensure row is a list
             if type(grid[row]) is not list:
                 print("Error: row '{}' is not a list".format(row))
-                return None
+                return 0
 
             # Ensure row is not empty
             if len(grid[row]) == 0:
                 print("Error: row '{}' is empty".format(row))
-                return None
+                return 0
     else:
         print("Error: grid is not a list")
-        return None
+        return 0
 
     # Declare necessary values
     land_zone = 1   # Each land zone is marked 1
