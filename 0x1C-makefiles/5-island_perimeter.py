@@ -49,11 +49,12 @@ def island_perimeter(grid):
     perimeter_of_cell = 4   # Each cell has 4unit length as perimeter
     length_of_side = 1      # Each side is 1unit long
     total_perimeter = 0     # Total perimeter of grid
+    row_len = len(grid[0])  # length of row
 
     for row in range(len(grid)):
         row_perimeter = 0   # Total perimeter of row
 
-        for col in range(row):
+        for col in range(row_len):
             # for land zones
             if grid[row][col] == land_zone:
                 row_perimeter += perimeter_of_cell
