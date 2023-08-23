@@ -1,0 +1,36 @@
+# Compiler
+CC = gcc
+
+# Temporary files
+TMP = $(wildcard *~ *.swp) # Emacs and Vim temporary files
+
+# Sources
+SRC = main.c school.c
+
+# Objects
+OBJ = $(SRC:.c=.o)
+
+# The executable
+NAME = school
+
+all: $(OBJ)
+	$(CC) $? -o $(NAME)
+
+$(OBJ): m.h
+
+.PHONY: clean \
+	oclean \
+	fcelan \
+	re
+
+clean: # delete all temporary files along with the executable
+	$(RM) $(TMP) $(NAME)
+
+oclean: # delete the object files
+	$(RM) $(OBJ)
+
+fclean: # delete all temporary files, executable and the object files
+	$(RM) $(TMP) $(NAME)
+	$(RM) $(OBJ)
+
+re: oclean all# force recompilation of all source files
