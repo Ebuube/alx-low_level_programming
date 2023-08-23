@@ -1,10 +1,12 @@
 # Compiler
 CC = gcc
-# Sources
-SRC = main.c school.c
+# Objects
+OBJ = main.c school.c
 
 # The executable
 NAME = school
 
-all:
-	$(CC) $(SRC) -o $(NAME)
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+$(OBJ): m.h
