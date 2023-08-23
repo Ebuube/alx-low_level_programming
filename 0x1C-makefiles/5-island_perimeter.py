@@ -68,9 +68,9 @@ def island_perimeter(grid):
 
             # For land zones only
 
-            # If there is a left element
+            # If there is a left element: note column -1 is the last column
             try:
-                if grid[row][col - 1] == land_zone:
+                if grid[row][col - 1] == land_zone and (col > 0):
                     row_perimeter -= length_of_side
             except IndexError:
                 pass
@@ -82,9 +82,9 @@ def island_perimeter(grid):
             except IndexError:
                 pass
 
-            # If there is a top element
+            # If there is a top element row -1 is the last row
             try:
-                if grid[row - 1][col] == land_zone:
+                if grid[row - 1][col] == land_zone and (row > 0):
                     row_perimeter -= length_of_side
             except IndexError:
                 pass
