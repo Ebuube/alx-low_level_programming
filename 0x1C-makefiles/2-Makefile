@@ -1,0 +1,16 @@
+# Compiler
+CC = gcc
+
+# Sources
+SRC = main.c school.c
+
+# Objects
+OBJ = $(SRC:.c=.o)
+
+# The executable
+NAME = school
+
+all: $(OBJ)
+	$(CC) $? -o $(NAME)
+
+$(OBJ): m.h
