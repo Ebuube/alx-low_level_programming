@@ -1,0 +1,10 @@
+# Compiler
+CC = gcc
+# Sources
+SRC = main.c school.c
+
+# The executable
+NAME = school
+
+all:
+	$(CC) $(SRC) -o $(NAME)
