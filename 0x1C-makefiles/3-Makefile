@@ -23,7 +23,7 @@ $(OBJ): m.h
 
 .PHONY: clean \
 	oclean \
-	fcelan \
+	fclean \
 	re
 
 clean: # delete all temporary files along with the executable
