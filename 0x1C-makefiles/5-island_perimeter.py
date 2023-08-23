@@ -39,6 +39,11 @@ def island_perimeter(grid):
             if len(grid[row]) == 0:
                 print("Error: row '{}' is empty".format(row))
                 return 0
+
+            # Ensure each row is of equal length
+            if len(grid[row]) != row_len:
+                print("Error: row '{}' is not of equal length".format(row))
+                return 0
     else:
         print("Error: grid is not a list")
         return 0
