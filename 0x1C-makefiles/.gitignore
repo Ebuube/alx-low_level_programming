@@ -1,2 +1,7 @@
 # Ignore python test files
 [0-9]-main.py
+
+
+# Ignore python cache directory
+
+__pycache__/
