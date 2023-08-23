@@ -23,7 +23,7 @@ def island_perimeter(grid):
     # Ensure 'grid' is a list of lists
     if type(grid) is list:
         if len(grid) == 0:
-            print("Error: grid is emtpy")
+            # print("Error: grid is emtpy")
             return 0
 
         # Ensure each row is of equal length
@@ -32,20 +32,20 @@ def island_perimeter(grid):
 
             # Ensure row is a list
             if type(grid[row]) is not list:
-                print("Error: row '{}' is not a list".format(row))
+                # print("Error: row '{}' is not a list".format(row))
                 return 0
 
             # Ensure row is not empty
             if len(grid[row]) == 0:
-                print("Error: row '{}' is empty".format(row))
+                # print("Error: row '{}' is empty".format(row))
                 return 0
 
             # Ensure each row is of equal length
             if len(grid[row]) != row_len:
-                print("Error: row '{}' is not of equal length".format(row))
+                # print("Error: row '{}' is not of equal length".format(row))
                 return 0
     else:
-        print("Error: grid is not a list")
+        # print("Error: grid is not a list")
         return 0
 
     # Declare necessary values
