@@ -9,8 +9,7 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *space = NULL;
-	char *tmp = NULL;
+	char *space = NULL;
 	unsigned int i = 0;
 
 	if (nmemb == 0 || size == 0)
@@ -24,10 +23,9 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	/* Initialize memory block to zero */
-	tmp = (char *)space;
 	for (i = 0; i < nmemb; i++)
 	{
-		tmp[i] = 0;
+		space[i] = 0;
 	}
 
 	return (space);
