@@ -23,6 +23,7 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *mem = 0;
+	unsigned int min_size = 0;
 
 	if (ptr == NULL)
 	{
@@ -48,7 +49,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		{
 			return (NULL);
 		}
-		mem = _memcpy(ptr, mem, old_size);
+		min_size = (new_size < old_size) ? new_size : old_size;
+		mem = _memcpy(ptr, mem, min_size);
 	}
 
 	return (mem);
