@@ -51,6 +51,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		}
 		min_size = (new_size < old_size) ? new_size : old_size;
 		mem = _memcpy(ptr, mem, min_size);
+
+		/* Free old pointer - since it has been reallocated */
+		free(ptr);
+
 	}
 
 	return (mem);
