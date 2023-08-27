@@ -9,7 +9,8 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *space = NULL;
+	void *space = NULL;
+	unsigned int i = 0;
 
 	if (nmemb == 0 || size == 0)
 	{
@@ -21,33 +22,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	space = _memset(space, 0, nmemb);
+	/* FILLING MEMORY BLOCK */
+	for (i = 0; i < nmemb * size; i++)
+	{
+		*((char *)space + i) = 0;
+	}
 
 	return (space);
-}
-
-/**
- * _memset - set the memory with a constant byte
- * @mem: allocated space to fill
- * @const_byte: constant byte
- * @nmemb: number of elements in the space to be filled
- *
- * Return: a poiter to the allocated space
- */
-char *_memset(char *mem, const char const_byte, const unsigned int nmemb)
-{
-	unsigned int i = 0;
-
-	if (mem == NULL)
-	{
-		return (NULL);
-	}
-
-	/* Initialize memory block to zero */
-	for (i = 0; i < nmemb; i++)
-	{
-		mem[i] = const_byte;
-	}
-
-	return (mem);
 }
