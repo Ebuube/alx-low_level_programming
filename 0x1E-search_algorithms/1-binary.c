@@ -11,7 +11,7 @@
  */
 int binary_search(int *array, size_t size, int value)
 {
-	unsigned int i = 0, new_size = 0;
+	unsigned int i = 0, half_size = 0;
 	int left = 0;
 
 	if (array == NULL || size == 0)
@@ -19,18 +19,8 @@ int binary_search(int *array, size_t size, int value)
 		return (-1);
 	}
 
-	/* i = roundup((float)(size / 2)); */
-	/* new_size = size / 2; */
-	/* i = (new_size > 1) ? new_size - 1 : 0; */
-	new_size = size / 2;
-	if (isodd(size))
-	{
-		i = new_size;
-	}
-	else
-	{
-		i = new_size - 1;
-	}
+	half_size = size / 2;
+	i = (isodd(size)) ? half_size : half_size - 1;
 
 	printf("Searching in array: ");
 	print_array(array, size);
@@ -40,13 +30,13 @@ int binary_search(int *array, size_t size, int value)
 		return (i);
 	}
 
-	printf("binary_search: i = %u\n", i);	/* test */
 	if (array[i] > value)
 		left = binary_search(array, i, value);
 	else if (isodd(size))
-		return (binary_search(array + new_size + 1, new_size, value));
+		return (binary_search(array + half_size + 1,
+					half_size, value));
 	else
-		return (binary_search(array + new_size, new_size, value));
+		return (binary_search(array + half_size, half_size, value));
 
 	return (left);
 }
@@ -78,31 +68,11 @@ int print_array(int *array, size_t size)
 		return (-1);
 	}
 
-	printf("print_array: size -> %lu\n", size);	/* test */
 	printf("%d", *(array + i));
 	i++;
 
 	for (; i < size; i++)
 		printf(", %d", *(array + i));
-
-	return (i);
-}
-
-/**
- * roundup - round up a float to the nearest higher integer
- * @num: value
- *
- * Return: rounded value
- */
-int roundup(float num)
-{
-	int i = 0;
-
-	i = num;
-	if (i < num)
-	{
-		return (i + 1);
-	}
 
 	return (i);
 }
