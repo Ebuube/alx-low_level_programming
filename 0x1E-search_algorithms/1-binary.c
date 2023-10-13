@@ -38,7 +38,6 @@ int b_search(int *array, unsigned int l_idx, unsigned int r_idx, int value)
 	{
 		return (-1);
 	}
-
 	if (l_idx == r_idx)
 	{	/* 1 element array */
 		printf("Searching array: ");
@@ -49,14 +48,12 @@ int b_search(int *array, unsigned int l_idx, unsigned int r_idx, int value)
 		else
 			return (-1);
 	}
-
 	half = (range) / 2;
 	mid = (isodd(range)) ? l_idx + half : l_idx + half - 1;
 
 	printf("Searching array: ");
 	print_array(array + l_idx, range);
 	printf("\n");
-	printf("mid: %d\n", array[mid]);	/* test */
 	if (array[mid] == value)
 	{
 		return (mid);
