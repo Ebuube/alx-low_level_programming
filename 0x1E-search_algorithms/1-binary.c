@@ -11,46 +11,68 @@
  */
 int binary_search(int *array, size_t size, int value)
 {
-	unsigned int i = 0, half_size = 0;
-	int left = 0;
-
 	if (array == NULL || size == 0)
 	{
 		return (-1);
 	}
 
-	half_size = size / 2;
-	i = (isodd(size)) ? half_size : half_size - 1;
-
-	printf("Searching in array: ");
-	print_array(array, size);
-	printf("\n");
-	if (array[i] == value)
-	{
-		return (i);
-	}
-
-	if (array[i] > value)
-		left = binary_search(array, i, value);
-	else if (isodd(size))
-		return (binary_search(array + half_size + 1,
-					half_size, value));
-	else
-		return (binary_search(array + half_size, half_size, value));
-
-	return (left);
+	return (b_search(array, 0, size - 1, value));
 }
 
 /**
- * isodd - is the number odd
- * @num: number to test
+ * b_search - search for a value in a sorted array (ascending order)
+ * @array: array to search in
+ * @l_idx: left index
+ * @r_idx: right index
+ * @value: search key
  *
- * Return: 1 if true, else 0
+ * description: uses binary search algorithm; elements are unique
+ * Return: index of item, on success; else -1
  */
-int isodd(int num)
+int b_search(int *array, unsigned int l_idx, unsigned int r_idx, int value)
 {
-	return (num % 2);
+	unsigned int half = 0, mid = 0, range = 0;
+
+	range = r_idx - l_idx + 1;
+	if (array == NULL || l_idx > r_idx)
+	{
+		return (-1);
+	}
+
+	if (l_idx == r_idx)
+	{	/* 1 element array */
+		printf("Searching array: ");
+		print_array(array + l_idx, 1);
+		printf("\n");
+		if (array[l_idx] == value)
+			return (l_idx);
+		else
+			return (-1);
+	}
+
+	half = (range) / 2;
+	mid = (isodd(range)) ? l_idx + half : l_idx + half - 1;
+
+	printf("Searching array: ");
+	print_array(array + l_idx, range);
+	printf("\n");
+	printf("mid: %d\n", array[mid]);	/* test */
+	if (array[mid] == value)
+	{
+		return (mid);
+	}
+	else if (array[mid] > value)
+	{	/* lower half */
+		return (b_search(array, l_idx, mid - 1, value));
+	}
+	else
+	{	/* upper half */
+		return (b_search(array, mid + 1, r_idx, value));
+	}
+
+	return (-1);
 }
+
 
 /**
  * print_array - print the array, comma-delimited
@@ -76,3 +98,16 @@ int print_array(int *array, size_t size)
 
 	return (i);
 }
+
+/**
+ * isodd - is the number odd
+ * @num: number to test
+ *
+ * Return: 1 if true, else 0
+ */
+int isodd(int num)
+{
+	return (num % 2);
+}
+
+
